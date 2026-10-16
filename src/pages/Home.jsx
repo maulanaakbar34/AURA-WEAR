@@ -1,117 +1,112 @@
+
 import { Link } from "react-router-dom";
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from "motion/react";
+import { motion } from "motion/react";
 import {
   ArrowRight,
   Truck,
   ShieldCheck,
   Heart,
+  ShoppingBag,
+  MapPin,
+  Phone,
+  LayoutGrid,
 } from "lucide-react";
+
+import "../styles/home.css";
 
 const categories = [
   {
     name: "Blouse & Atasan",
-    image:
-      "/assets/atas 1.jpg.jpeg",
+    image: "/assets/atas 1.jpg.jpeg",
     slug: "blouse",
+    number: "01",
   },
   {
     name: "Dress",
-    image:
-      "/assets/dress 2.jpg.jpeg",
+    image: "/assets/dress 2.jpg.jpeg",
     slug: "dress",
+    number: "02",
   },
   {
     name: "Cardigan & Knitwear",
-    image:
-      "/assets/cardigan 2.jpg.jpeg ",
+    image: "/assets/cardigan 2.jpg.jpeg",
     slug: "cardigan",
+    number: "03",
   },
   {
     name: "Rok",
-    image:
-      "/assets/rok 1.jpg.jpeg",
+    image: "/assets/rok 1.jpg.jpeg",
     slug: "rok",
+    number: "04",
   },
 ];
 
-function InteractiveHeroImage() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = {
-    stiffness: 100,
-    damping: 20,
-    mass: 0.5,
-  };
-
-  const springX = useSpring(mouseX, springConfig);
-  const springY = useSpring(mouseY, springConfig);
-
-  const rotateY = useTransform(
-    springX,
-    [-0.5, 0.5],
-    [-4, 4]
-  );
-
-  const rotateX = useTransform(
-    springY,
-    [-0.5, 0.5],
-    [4, -4]
-  );
-
-  function handleMouseMove(event) {
-    const rect = event.currentTarget.getBoundingClientRect();
-
-    mouseX.set(
-      (event.clientX - rect.left) / rect.width - 0.5
-    );
-
-    mouseY.set(
-      (event.clientY - rect.top) / rect.height - 0.5
-    );
-  }
-
-  function handleMouseLeave() {
-    mouseX.set(0);
-    mouseY.set(0);
-  }
-
-  return (
-    <motion.div
-      className="hero-image"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformPerspective: 1000,
-      }}
-    >
-      <img
-        src="/assets/profil.jpg.jpeg"
-        alt="Inspirasi gaya fashion wanita"
-      />
-
-      <div className="hero-image-caption">
-        <span>The latest collection is here</span>
-        <strong>Everyday Essentials</strong>
-      </div>
-    </motion.div>
-  );
-}
-
 function Home() {
   return (
-    <div className="home-page">
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-content">
-          <span className="hero-label">
+    <main className="home-page">
+      {/* HERO FULL SCREEN */}
+      <section className="fashion-hero">
+        <img
+          className="fashion-hero-image"
+          src="/assets/profil.jpg.jpeg"
+          alt="Koleksi fashion AURA-S-WEAR"
+          fetchPriority="high"
+        />
+
+        <div className="fashion-hero-overlay" />
+
+        {/* NAVBAR TRANSPARAN */}
+        <header className="fashion-header">
+          <Link
+            to="/"
+            className="fashion-brand"
+            aria-label="AURA-S-WEAR Beranda"
+          >
+            <span className="fashion-brand-name">
+              AURA'SWEAR
+            </span>
+
+            <span className="fashion-brand-tagline">
+              STYLE YOUR STORY
+            </span>
+          </Link>
+
+          <nav
+            className="fashion-top-nav"
+            aria-label="Navigasi utama"
+          >
+            <Link to="/" aria-current="page">
+              Beranda
+            </Link>
+            <Link to="/koleksi">Koleksi</Link>
+            <Link to="/alamat-toko">Alamat Toko</Link>
+            <Link to="/kontak">Kontak</Link>
+          </nav>
+
+          <div className="fashion-header-actions">
+            <Link
+              to="/wishlist"
+              className="fashion-wishlist"
+              aria-label="Buka wishlist"
+              title="Wishlist"
+            >
+              <Heart size={22} strokeWidth={1.6} />
+            </Link>
+
+            <Link
+              to="/keranjang"
+              className="fashion-cart"
+              aria-label="Buka keranjang"
+              title="Keranjang"
+            >
+              <ShoppingBag size={22} strokeWidth={1.6} />
+            </Link>
+          </div>
+        </header>
+
+        {/* KONTEN HERO */}
+        <div className="fashion-hero-content">
+          <span className="fashion-eyebrow">
             YOUR EVERYDAY FASHION
           </span>
 
@@ -123,114 +118,179 @@ function Home() {
 
           <p>
             Temukan gaya yang mencerminkan dirimu.
-            Koleksi fashion minimalis yang nyaman,
-            timeless, dan mudah dipadukan setiap hari.
+            Koleksi fashion modern yang nyaman, timeless,
+            dan mudah dipadukan setiap hari.
           </p>
 
-          <Link to="/koleksi" className="hero-button">
+          <Link
+            to="/koleksi"
+            className="fashion-shop-button"
+          >
             Belanja Sekarang
             <ArrowRight size={18} />
           </Link>
 
-          <div className="hero-note">
-            Minimalist style, maximum confidence.
-          </div>
+          <span className="fashion-hero-note">
+            MINIMALIST STYLE, MAXIMUM CONFIDENCE
+          </span>
         </div>
 
-        <InteractiveHeroImage />
+        <div className="fashion-hero-bottom">
+          <span>NEW COLLECTION</span>
+          <span>DISCOVER YOUR STYLE ↓</span>
+        </div>
       </section>
 
-      
-            {/* Categories Section */}
-            <motion.section
-              className="categories-section section-container"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+      {/* KOLEKSI KATEGORI */}
+      <motion.section
+        className="home-collections"
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.65 }}
+      >
+        <div className="home-section-heading">
+          <div>
+            <span className="home-section-label">
+              FIND YOUR STYLE
+            </span>
+
+            <h2>Explore Collections</h2>
+
+            <p>
+              Temukan koleksi favorit untuk setiap momen.
+            </p>
+          </div>
+
+          <Link
+            to="/koleksi"
+            className="home-text-link"
+          >
+            Lihat Semua
+            <ArrowRight size={16} />
+          </Link>
+        </div>
+
+        <div className="home-category-grid">
+          {categories.map((category) => (
+            <Link
+              to={`/koleksi/${category.slug}`}
+              className="home-category-card"
+              key={category.slug}
             >
-              <div className="section-heading">
-                <div>
-                  <span className="section-label">
-                    FIND YOUR STYLE
-                  </span>
+              <div className="home-category-image">
+                <img
+                  src={category.image}
+                  alt={category.name}
+                  loading="lazy"
+                />
 
-                  <h2>Explore Collections</h2>
+                <span className="home-category-number">
+                  {category.number}
+                </span>
 
-                  <p>
-                    Temukan koleksi favorit untuk setiap momen.
-                  </p>
-                </div>
-
-                <Link to="/koleksi" className="text-link">
-                  Lihat Semua <ArrowRight size={16} />
-                </Link>
+                <span className="home-category-arrow">
+                  <ArrowRight size={19} />
+                </span>
               </div>
 
-              <div className="category-grid">
-                {categories.map((category) => (
-                  <Link
-                    to={`/koleksi/${category.slug}`}
-                    className="category-card"
-                    key={category.slug}
-                  >
-                    <div className="category-image">
-                      <img
-                        src={category.image.trim()}
-                        alt={category.name}
-                        loading="lazy"
-                      />
-                    </div>
-
-                    <div className="category-info">
-                      <h3>{category.name}</h3>
-
-                      <span>
-                        Explore <ArrowRight size={15} />
-                      </span>
-                    </div>
-                  </Link>
-                ))}
+              <div className="home-category-info">
+                <h3>{category.name}</h3>
+                <span>Explore Collection</span>
               </div>
-            </motion.section>
+            </Link>
+          ))}
+        </div>
+      </motion.section>
 
-
-      {/* Benefits Section */}
-      <section className="benefits-section">
-        <div className="benefit-item">
-          <Truck size={26} strokeWidth={1.5} />
-
+      {/* KEUNGGULAN TOKO */}
+      <section className="home-benefits">
+        <div className="home-benefit-item">
+          <Truck size={27} strokeWidth={1.4} />
           <div>
             <h3>Pengiriman Mudah</h3>
-            <p>
-              Informasi pengiriman melalui WhatsApp.
-            </p>
+            <p>Informasi pengiriman melalui WhatsApp.</p>
           </div>
         </div>
 
-        <div className="benefit-item">
-          <ShieldCheck size={26} strokeWidth={1.5} />
-
+        <div className="home-benefit-item">
+          <ShieldCheck size={27} strokeWidth={1.4} />
           <div>
             <h3>Belanja Nyaman</h3>
-            <p>
-              Informasi produk yang jelas dan transparan.
-            </p>
+            <p>Informasi produk yang jelas dan transparan.</p>
           </div>
         </div>
 
-        <div className="benefit-item">
-          <Heart size={26} strokeWidth={1.5} />
-
+        <div className="home-benefit-item">
+          <Heart size={27} strokeWidth={1.4} />
           <div>
             <h3>Style Your Way</h3>
-            <p>
-              Pilih gaya yang paling mencerminkan dirimu.
-            </p>
+            <p>Pilih gaya yang mencerminkan dirimu.</p>
           </div>
         </div>
       </section>
-    </div>
+
+      {/* FOOTER HITAM — PERTAHANKAN */}
+      <footer className="home-footer">
+        <div className="home-footer-brand">
+          <Link to="/" className="fashion-brand">
+            <span className="fashion-brand-name">
+              AURA'SWEAR
+            </span>
+            <span className="fashion-brand-tagline">
+              STYLE YOUR STORY
+            </span>
+          </Link>
+        </div>
+
+        <div className="home-footer-links">
+          <h3>Jelajahi</h3>
+          <Link to="/">Beranda</Link>
+
+          <Link to="/koleksi">
+            <LayoutGrid size={15} />
+            Koleksi
+          </Link>
+
+          <Link to="/alamat-toko">
+            <MapPin size={15} />
+            Alamat Toko
+          </Link>
+
+          <Link to="/kontak">
+            <Phone size={15} />
+            Kontak
+          </Link>
+
+          <Link to="/wishlist">
+            <Heart size={15} />
+            Wishlist
+          </Link>
+        </div>
+
+        <div className="home-footer-contact">
+          <h3>Temukan Gaya Kamu</h3>
+          <p>
+            Jelajahi koleksi dan temukan pilihan favoritmu.
+          </p>
+
+          <Link
+            to="/koleksi"
+            className="home-footer-button"
+          >
+            Belanja Sekarang
+            <ArrowRight size={16} />
+          </Link>
+        </div>
+
+        <div className="home-footer-bottom">
+          <span>
+            © {new Date().getFullYear()} AURA-S-WEAR
+          </span>
+          <span>STYLE YOUR STORY.</span>
+        </div>
+      </footer>
+    </main>
   );
 }
 

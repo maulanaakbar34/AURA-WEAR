@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext(null);
@@ -24,16 +23,22 @@ export function CartProvider({ children }) {
     readStorage(WISHLIST_STORAGE_KEY)
   );
 
+  // Simpan keranjang ke localStorage
   useEffect(() => {
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
   }, [cartItems]);
 
+  // Simpan wishlist ke localStorage
   useEffect(() => {
     localStorage.setItem(
       WISHLIST_STORAGE_KEY,
       JSON.stringify(wishlistItems)
     );
   }, [wishlistItems]);
+
+  // =========================
+  // KERANJANG
+  // =========================
 
   function addToCart(product, size, color, quantity = 1) {
     const key = `${product.id}-${size}-${color}`;
@@ -87,21 +92,49 @@ export function CartProvider({ children }) {
     setCartItems([]);
   }
 
+  // =========================
+  // WISHLIST
+  // =========================
+
   function toggleWishlist(product) {
     setWishlistItems((currentItems) => {
       const exists = currentItems.some(
-        (item) => item.id === product.id
+        (item) => String(item.id) === String(product.id)
       );
 
-      return exists
-        ? currentItems.filter((item) => item.id !== product.id)
-        : [...currentItems, product];
+      if (exists) {
+        return currentItems.filter(
+          (item) => String(item.id) !== String(product.id)
+        );
+      }
+
+      return [...currentItems, product];
     });
   }
 
   function isInWishlist(productId) {
-    return wishlistItems.some((item) => item.id === productId);
+    return wishlistItems.some(
+      (item) => String(item.id) === String(productId)
+    );
   }
+
+  // Hapus satu produk dari wishlist
+  function removeFromWishlist(productId) {
+    setWishlistItems((currentItems) =>
+      currentItems.filter(
+        (item) => String(item.id) !== String(productId)
+      )
+    );
+  }
+
+  // Hapus semua produk dari wishlist
+  function clearWishlist() {
+    setWishlistItems([]);
+  }
+
+  // =========================
+  // TOTAL KERANJANG
+  // =========================
 
   const cartCount = cartItems.reduce(
     (total, item) => total + item.quantity,
@@ -118,12 +151,17 @@ export function CartProvider({ children }) {
       value={{
         cartItems,
         wishlistItems,
+
         addToCart,
         updateQuantity,
         removeFromCart,
         clearCart,
+
         toggleWishlist,
         isInWishlist,
+        removeFromWishlist,
+        clearWishlist,
+
         cartCount,
         cartTotal,
       }}
@@ -137,7 +175,9 @@ export function useCart() {
   const context = useContext(CartContext);
 
   if (!context) {
-    throw new Error("useCart harus digunakan di dalam CartProvider");
+    throw new Error(
+      "useCart harus digunakan di dalam CartProvider"
+    );
   }
 
   return context;

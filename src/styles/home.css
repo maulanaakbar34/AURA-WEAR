@@ -1,0 +1,1182 @@
+
+/* =========================================
+   AURA-S-WEAR HOME PAGE
+   ========================================= */
+
+.home-page {
+  width: 100%;
+  overflow: clip;
+  color: #25241f;
+  background: #fff;
+  font-family: inherit;
+}
+
+.home-page a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* HERO FULL SCREEN */
+
+.fashion-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  color: #fff;
+  background: #34312d;
+}
+
+.fashion-hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.fashion-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.48) 0%,
+      rgba(0, 0, 0, 0.08) 30%,
+      rgba(0, 0, 0, 0.16) 50%,
+      rgba(0, 0, 0, 0.62) 100%
+    );
+}
+
+/* TRANSPARENT HEADER */
+
+.fashion-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 26px 6%;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.fashion-brand {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 5px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.fashion-brand-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 2.4vw, 30px);
+  font-weight: 400;
+  letter-spacing: 2.5px;
+}
+
+.fashion-brand-tagline {
+  padding-left: 2px;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.fashion-top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 3vw, 42px);
+}
+
+.fashion-top-nav a {
+  position: relative;
+  color: #fff;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.fashion-top-nav a::after {
+  position: absolute;
+  right: 0;
+  bottom: -6px;
+  left: 0;
+  height: 1px;
+  background: #fff;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.25s ease;
+}
+
+.fashion-top-nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.fashion-cart {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  place-items: center;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background 0.25s ease;
+}
+
+.fashion-cart:hover {
+  background: rgba(255, 255, 255, 0.17);
+}
+
+/* HERO TEXT */
+
+.fashion-hero-content {
+  width: min(850px, 90%);
+  padding: 120px 0 100px;
+  text-align: center;
+  animation: home-fade-in 0.8s ease both;
+}
+
+.fashion-eyebrow {
+  display: inline-block;
+  margin-bottom: 22px;
+  font-size: 11px;
+  letter-spacing: 5px;
+}
+
+.fashion-hero-content h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(44px, 7vw, 84px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  text-wrap: balance;
+}
+
+.fashion-hero-content h1 span {
+  font-style: italic;
+}
+
+.fashion-hero-content p {
+  max-width: 540px;
+  margin: 23px auto 30px;
+  color: rgba(255, 255, 255, 0.91);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.fashion-shop-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  min-height: 54px;
+  padding: 0 30px;
+  color: #25241f;
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.fashion-shop-button:hover {
+  color: #fff;
+  background: transparent;
+  transform: translateY(-2px);
+}
+
+.fashion-hero-note {
+  display: block;
+  margin-top: 24px;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.fashion-hero-bottom {
+  position: absolute;
+  right: 6%;
+  bottom: 25px;
+  left: 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* COLLECTION SECTION */
+
+.home-collections {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 100px 6% 110px;
+}
+
+.home-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.home-section-label {
+  display: block;
+  margin-bottom: 13px;
+  color: #8b7865;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.home-section-heading h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.home-section-heading p {
+  margin: 12px 0 0;
+  color: #77736d;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.home-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+  padding-bottom: 5px;
+  color: #25241f;
+  border-bottom: 1px solid #aaa39a;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.home-category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.home-category-card {
+  min-width: 0;
+  color: #25241f;
+  text-decoration: none;
+}
+
+.home-category-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: #eeeae4;
+}
+
+.home-category-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+
+.home-category-card:hover .home-category-image img {
+  transform: scale(1.045);
+}
+
+.home-category-number {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  color: #25241f;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 50%;
+  font-size: 10px;
+}
+
+.home-category-arrow {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: grid;
+  width: 39px;
+  height: 39px;
+  place-items: center;
+  color: #25241f;
+  background: #fff;
+  border-radius: 50%;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.home-category-card:hover .home-category-arrow {
+  color: #fff;
+  background: #25241f;
+}
+
+.home-category-info {
+  padding: 17px 0 0;
+}
+
+.home-category-info h3 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.home-category-info > span {
+  display: block;
+  margin-top: 8px;
+  color: #8a857d;
+  font-size: 11px;
+}
+
+
+.home-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 35px;
+  padding: 65px 8%;
+  background: #f8f6f2;
+}
+
+.home-benefit-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 17px;
+}
+
+.home-benefit-item > svg {
+  flex-shrink: 0;
+  color: #8b7865;
+}
+
+.home-benefit-item h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.home-benefit-item p {
+  margin: 0;
+  color: #77736d;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* FOOTER */
+
+.home-footer {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 1fr;
+  gap: 45px;
+  padding: 65px 6% 0;
+  color: #fff;
+  background: #22211e;
+}
+
+.home-footer-brand .fashion-brand-name {
+  font-size: 24px;
+}
+
+.home-footer-brand p,
+.home-footer-contact p {
+  max-width: 300px;
+  margin: 18px 0 0;
+  color: #c4c0b8;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.home-footer-links,
+.home-footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.home-footer-links h3,
+.home-footer-contact h3 {
+  margin: 0 0 6px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.home-footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #c4c0b8;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.home-footer-links a:hover {
+  color: #fff;
+}
+
+.home-footer-contact p {
+  margin: 0;
+}
+
+.home-footer-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 5px;
+  color: #fff;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.home-footer-bottom {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 15px;
+  padding: 23px 0;
+  color: #a9a49b;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+/* ANIMATION */
+
+@keyframes home-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+  .fashion-header {
+    padding-right: 4%;
+    padding-left: 4%;
+    gap: 18px;
+  }
+
+  .fashion-top-nav {
+    gap: 17px;
+  }
+
+  .fashion-top-nav a {
+    font-size: 12px;
+  }
+
+  .home-collections {
+    padding: 75px 4%;
+  }
+
+  .home-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 20px;
+  }
+
+  .home-benefits {
+    padding-right: 5%;
+    padding-left: 5%;
+    gap: 20px;
+  }
+
+  .home-footer {
+    gap: 30px;
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .fashion-hero {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  .fashion-hero-image {
+    object-position: 57% center;
+  }
+
+  .fashion-hero-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.48) 0%,
+        rgba(0, 0, 0, 0.12) 28%,
+        rgba(0, 0, 0, 0.25) 48%,
+        rgba(0, 0, 0, 0.68) 100%
+      );
+  }
+
+  .fashion-header {
+    padding: 19px 5%;
+    gap: 10px;
+  }
+
+  .fashion-brand-name {
+    font-size: 17px;
+    letter-spacing: 1.5px;
+  }
+
+  .fashion-brand-tagline {
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
+
+  .fashion-top-nav {
+    gap: 12px;
+  }
+
+  .fashion-top-nav a {
+    font-size: 10px;
+  }
+
+  .fashion-cart {
+    width: 35px;
+    height: 35px;
+  }
+
+  .fashion-cart svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .fashion-hero-content {
+    width: 92%;
+    padding: 100px 0 80px;
+  }
+
+  .fashion-eyebrow {
+    margin-bottom: 17px;
+    font-size: 9px;
+    letter-spacing: 3px;
+  }
+
+  .fashion-hero-content h1 {
+    font-size: clamp(39px, 9vw, 52px);
+    letter-spacing: -1px;
+  }
+
+  .fashion-hero-content p {
+    max-width: 340px;
+    margin: 18px auto 24px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .fashion-shop-button {
+    min-height: 49px;
+    padding: 0 24px;
+    font-size: 13px;
+  }
+
+  .fashion-hero-note {
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+
+  .fashion-hero-bottom {
+    right: 5%;
+    bottom: 17px;
+    left: 5%;
+    font-size: 7px;
+    letter-spacing: 1.3px;
+  }
+
+  .home-collections {
+    padding: 60px 5% 70px;
+  }
+
+  .home-section-heading {
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  .home-section-heading h2 {
+    font-size: 31px;
+  }
+
+  .home-section-heading p {
+    max-width: 280px;
+    font-size: 12px;
+  }
+
+  .home-section-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .home-text-link {
+    gap: 5px;
+    margin-top: 28px;
+    font-size: 11px;
+  }
+
+  .home-category-grid {
+    gap: 25px 13px;
+  }
+
+  .home-category-number {
+    top: 9px;
+    left: 9px;
+    width: 29px;
+    height: 29px;
+    font-size: 9px;
+  }
+
+  .home-category-arrow {
+    right: 9px;
+    bottom: 9px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .home-category-info {
+    padding-top: 12px;
+  }
+
+  .home-category-info h3 {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .home-category-info > span {
+    margin-top: 5px;
+    font-size: 10px;
+  }
+
+  .home-collection-banner {
+    min-height: 350px;
+    padding: 55px 6%;
+  }
+
+  .home-banner-content h2 {
+    font-size: 37px;
+  }
+
+  .home-banner-content p {
+    font-size: 12px;
+  }
+
+  .home-benefits {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 40px 8%;
+  }
+
+  .home-benefit-item {
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  .home-footer {
+    grid-template-columns: 1fr 1fr;
+    gap: 35px 20px;
+    padding: 45px 6% 0;
+  }
+
+  .home-footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .home-footer-contact {
+    grid-column: 1 / -1;
+  }
+
+  .home-footer-bottom {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  .fashion-hero-content {
+    animation: none;
+  }
+
+  .home-page *,
+  .home-page *::before,
+  .home-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* FINAL FIX: homepage full screen */
+
+.home-page {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.fashion-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 600px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.fashion-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+/* Navbar langsung di atas gambar */
+.fashion-header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 5%;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Hilangkan panel navigasi bawah jika masih ada */
+.fashion-bottom-nav {
+  display: none !important;
+}
+
+/* Konten berada di tengah gambar */
+.fashion-hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(850px, 90%);
+  margin: 0 auto;
+  padding: 100px 0 70px;
+  text-align: center;
+}
+
+/* Tidak ada jarak default di atas halaman */
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+@media (max-width: 600px) {
+  .fashion-hero {
+    min-height: 560px;
+  }
+
+  .fashion-header {
+    padding: 20px 4%;
+    gap: 10px;
+  }
+
+  .fashion-hero-content {
+    width: 92%;
+  }
+}
+
+
+/* Hilangkan jarak layout global khusus halaman beranda */
+.home-main-content {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  max-width: none;
+}
+
+/* Hero menempel pada bagian paling atas halaman */
+.home-main-content .fashion-hero {
+  margin-top: 0 !important;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.fashion-top-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+
+/* Navbar transparan dengan menu tepat di tengah */
+.fashion-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 28px 5%;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Logo tetap di kiri */
+.fashion-header .fashion-brand {
+  justify-self: start;
+}
+
+/* Menu berada tepat di tengah layar */
+.fashion-header .fashion-top-nav {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Ikon keranjang tetap di kanan */
+.fashion-header .fashion-cart {
+  justify-self: end;
+}
+
+.fashion-header .fashion-top-nav a {
+  color: #fff;
+  white-space: nowrap;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+/* Penyesuaian layar kecil */
+@media (max-width: 600px) {
+  .fashion-header {
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    padding: 20px 4%;
+  }
+
+  .fashion-header .fashion-top-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: center;
+    gap: 20px;
+  }
+
+  .fashion-header .fashion-cart {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .fashion-header .fashion-top-nav a {
+    font-size: 11px;
+  }
+}
+
+
+/* Perbaikan posisi logo dan tagline footer */
+.home-footer-brand {
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.home-footer-brand .fashion-brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.home-footer-brand .fashion-brand-name {
+  white-space: nowrap;
+  font-size: clamp(20px, 2vw, 24px);
+  letter-spacing: 2px;
+  line-height: 1.3;
+}
+
+.home-footer-brand .fashion-brand-tagline {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin-top: 5px;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.home-footer-brand p {
+  margin-top: 18px;
+  max-width: 100%;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .home-footer-brand .fashion-brand-name {
+    font-size: 21px;
+  }
+
+  .home-footer-brand .fashion-brand-tagline {
+    font-size: 8px;
+    letter-spacing: 2.5px;
+  }
+}
+
+
+/* Tombol wishlist dan keranjang di navbar */
+.fashion-header-actions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 12px;
+}
+
+.fashion-wishlist,
+.fashion-cart {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  place-items: center;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+  text-decoration: none;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.fashion-wishlist:hover,
+.fashion-cart:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+.fashion-wishlist svg,
+.fashion-cart svg {
+  width: 21px;
+  height: 21px;
+}
+
+@media (max-width: 600px) {
+  .fashion-header-actions {
+    gap: 7px;
+  }
+
+  .fashion-wishlist,
+  .fashion-cart {
+    width: 34px;
+    height: 34px;
+  }
+
+  .fashion-wishlist svg,
+  .fashion-cart svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+
+/* Sembunyikan bottom navigation pada halaman selain beranda */
+.main-content .bottom-nav,
+.main-content .bottom-navbar,
+.main-content .mobile-bottom-nav,
+.main-content .bottom-navigation {
+  display: none !important;
+}
+
+
+/* ================================
+   FOOTER AURA-S-WEAR
+   ================================ */
+
+.home-footer {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.2fr 0.7fr 1fr;
+  gap: 48px;
+  padding: 64px 6% 28px;
+  background: #22221f;
+  color: #f8f4ed;
+  box-sizing: border-box;
+}
+
+.home-footer .fashion-brand {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.home-footer .fashion-brand-name {
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  letter-spacing: 3px;
+}
+
+.home-footer .fashion-brand-tagline {
+  color: #e0d7c9;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.home-footer-links,
+.home-footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.home-footer-links h3,
+.home-footer-contact h3 {
+  margin: 0 0 8px;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.home-footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #d3cec4;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.home-footer-links a:hover {
+  color: #fff;
+}
+
+.home-footer-contact p {
+  max-width: 340px;
+  margin: 0;
+  color: #d3cec4;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.home-footer-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.home-footer-button:hover {
+  opacity: 0.75;
+}
+
+.home-footer-bottom {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  color: #bdb5a9;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* Responsif untuk tablet dan HP */
+@media (max-width: 768px) {
+  .home-footer {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 24px;
+    padding: 44px 6% 24px;
+  }
+
+  .home-footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .home-footer-contact {
+    grid-column: 1 / -1;
+  }
+
+  .home-footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .home-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .home-footer-brand,
+  .home-footer-contact,
+  .home-footer-bottom {
+    grid-column: 1;
+  }
+}
